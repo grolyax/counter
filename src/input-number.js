@@ -20,4 +20,5 @@ export default class InputNumber extends Component {
 
 InputNumber.propTypes = {
     value: PropTypes.number.isRequired,
+    onChange: PropTypes.func.isRequired,
 }
