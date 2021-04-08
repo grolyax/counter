@@ -8,9 +8,25 @@ export default class InputNumber extends Component {
         this.handleChange = this.handleChange.bind(this); //привязали метод к компоненту, иначе не разглядитp
     }
     handleChange(event) {
-        const { onChange } = this.props;
-        onChange(parseInt(event.target.value));
-      }
+        const { onChange, value: number, min, max } = this.props;
+
+        const { value } = event.target;
+
+        const parsedValue = parseInt(value, 10);
+        if (Number.isNaN(parsedValue)) {
+            onChange('');
+            return;
+        }
+        if (min && max) {
+            if (parsedValue > max || parsedValue < min) {
+                onChange(number);
+
+                return;
+            }
+        }
+        
+        onChange(parsedValue);
+    }
 
     render() {
         const { value } = this.props;

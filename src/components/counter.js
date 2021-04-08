@@ -3,7 +3,7 @@ import Button from './button.js';
 import InputNumber from './input-number.js';
 import PropTypes from 'prop-types';
 
-import './App.css';
+//import '..styles/App.css';
 
 class Counter extends Component {
   constructor() {
@@ -19,7 +19,7 @@ class Counter extends Component {
 
   handleChange(delta) {
     this.setState({
-      number: this.state.number + delta,  //создали изменяющуюся переменную
+      number: parseInt(this.state.number + delta),  //создали изменяющуюся переменную
     });
   }
 
@@ -36,7 +36,7 @@ class Counter extends Component {
       <div className="App">
         <Button onClick={this.handleChange} buttonText="-" delta={-1} disabled={number <= min} />
 
-        <InputNumber onChange={this.handleInputChange} value={number} />
+        <InputNumber onChange={this.handleInputChange} value={number} min={min} max={max}/>
 
         <Button onClick={this.handleChange} buttonText="+" delta={1} disabled={number >= max} />
       </div>
